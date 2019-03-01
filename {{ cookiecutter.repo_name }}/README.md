@@ -14,14 +14,12 @@ Insert your code into the respective folders, i.e. `scripts`, `rules`, and `envs
 
 ### Step 1: Install workflow
 
-If you simply want to use this workflow, download and extract the [latest release](https://github.com/snakemake-workflows/{{cookiecutter.repo_name}}/releases).
+If you simply want to use this workflow, clone the [latest release](https://github.com/bfairkun/{{cookiecutter.repo_name}}).
 If you intend to modify and further develop this workflow, fork this repository. Please consider providing any generally applicable modifications via a pull request.
-
-In any case, if you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this repository and, if available, its DOI (see above).
 
 ### Step 2: Configure workflow
 
-Configure the workflow according to your needs via editing the file `config.yaml`.
+Configure the workflow according to your needs via editing the file `config.yaml`. Configure cluster settings in `cluster-config.json`
 
 ### Step 3: Execute workflow
 
@@ -35,14 +33,10 @@ Execute the workflow locally via
 
 using `$N` cores or run it in a cluster environment via
 
-    snakemake --cluster qsub --jobs 100
+    snakemake --cluster --cluster-config cluster-config.json --cluster "sbatch --partition={cluster.partition} --job-name={cluster.name} --output=/dev/null --job-name={cluster.name} --nodes={cluster.n} --mem={cluster.mem}"
 
-or
+or by executing the included sbatch script to execute the snakemake process from a cluster
 
-    snakemake --drmaa --jobs 100
+    sbatch snakemake.sbatch
 
 See the [Snakemake documentation](https://snakemake.readthedocs.io) for further details.
-
-## Testing
-
-Tests cases are in the subfolder `.test`. They should be executed via continuous integration with Travis CI.

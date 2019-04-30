@@ -23,3 +23,4 @@ scripts/.snakemake*
 !.test
 !snakemake.sbatch
 !cluster-config.json
+*.swp

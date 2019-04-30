@@ -4,7 +4,7 @@
 # individual jobs from the compute node.
 
 #SBATCH --job-name=snakemake
-#SBATCH --output=/home/bjf79/slurm_stdout_logs/{{cookiecutter.repo_name}}.txt
+#SBATCH --output=snakemake.sbatch.log
 #SBATCH --time=4-00:00:00
 #SBATCH --partition=gilad
 #SBATCH --mem=4G

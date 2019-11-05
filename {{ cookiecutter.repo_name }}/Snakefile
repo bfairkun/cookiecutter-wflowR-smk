@@ -4,6 +4,8 @@
 include: "rules/common.smk"
 configfile: "config.yaml"
 
+# Instead of using samples.tsv file, a quick/dirty way to apply rules over grob of existing files is this:
+# IDS, = glob_wildcards("Path/To/{MyFileNames}.bed.gz")
 
 rule all:
     input:

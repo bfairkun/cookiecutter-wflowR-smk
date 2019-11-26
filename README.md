@@ -9,7 +9,7 @@ pip install cookiecutter
 
 Start creating a snakemake-workflow from cookiecutter:
 ```
-cookiecutter https://github.com/bfairkun/cookiecutter-snakemake-workflow.git
+cookiecutter https://github.com/bfairkun/cookiecutter-wflowR-smk.git
 ```
 
 Start scripting workflow.

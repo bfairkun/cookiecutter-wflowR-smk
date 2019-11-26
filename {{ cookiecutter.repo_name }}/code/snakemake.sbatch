@@ -5,7 +5,7 @@
 
 #SBATCH --job-name=snakemake
 #SBATCH --output=snakemake.sbatch.log
-#SBATCH --time=1-00:00:00
+#SBATCH --time=1-08:00:00
 #SBATCH --partition=broadwl
 #SBATCH --mem=4G
 #SBATCH --tasks-per-node=4

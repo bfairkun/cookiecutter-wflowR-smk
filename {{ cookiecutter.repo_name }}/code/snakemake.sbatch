@@ -11,4 +11,4 @@
 #SBATCH --tasks-per-node=4
 
 
-snakemake --jobs 200 -p --ri --use-conda --cluster-config cluster-config.json --cluster "sbatch --partition={cluster.partition} --job-name={cluster.name} --output=/dev/null --job-name={cluster.name} --nodes={cluster.n} --mem={cluster.mem}"
+snakemake --profile snakemake_profiles/slurm

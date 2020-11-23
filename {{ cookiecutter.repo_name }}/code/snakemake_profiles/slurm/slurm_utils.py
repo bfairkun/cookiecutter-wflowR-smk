@@ -127,7 +127,7 @@ def ensure_dirs_exist(path):
 
 def submit_job(jobscript, **sbatch_options):
     """Submit jobscript and return jobid."""
-    optsbatch_options = [f"--{k}={v}" for k, v in sbatch_options.items()]
+    optsbatch_options = ["--{}={}".format(k,v) for k, v in sbatch_options.items()]
     try:
         res = subprocess.check_output(["sbatch"] + optsbatch_options + [jobscript])
     except subprocess.CalledProcessError as e:

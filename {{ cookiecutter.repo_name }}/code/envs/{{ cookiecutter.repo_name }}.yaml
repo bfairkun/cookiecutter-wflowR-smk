@@ -1,0 +1,24 @@
+name: {{ cookiecutter.repo_name }}
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.6   # or 2.7
+  - numpy=1.9.*
+  - bcftools
+  - bedtools
+  - biopython
+  - fastx_toolkit
+  - hisat2=2.1.0
+  - multiqc
+  - numpy
+  - pandas
+  - picard
+  - qualimap
+  - samtools
+  - scipy
+  - snakemake={{ cookiecutter.min_snakemake_version }}
+  - star=2.6.1b
+  - ucsc-bedgraphtobigwig
+  - ucsc-liftover
+  - vcftools 

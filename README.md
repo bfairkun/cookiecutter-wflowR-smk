@@ -12,6 +12,7 @@ Start creating a snakemake-workflow from cookiecutter:
 cookiecutter https://github.com/bfairkun/cookiecutter-wflowR-smk.git
 ```
 
+This will create a project template with the following directory structure:
 
 ```
 .

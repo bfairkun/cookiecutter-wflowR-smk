@@ -1,4 +1,4 @@
-# myproject
+# {{ cookiecutter.project_name }}
 
 A [workflowr][] project.
 

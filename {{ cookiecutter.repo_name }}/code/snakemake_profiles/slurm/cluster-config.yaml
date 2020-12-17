@@ -1,5 +1,5 @@
 __default__:
-    partition: broadwl # the partition you use
+    partition: {{ cookiecutter.slurm_parition }} # the partition you use
     nodes: 1
     ntasks: 1
     mem: 4000

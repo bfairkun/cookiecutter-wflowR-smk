@@ -17,7 +17,7 @@ If you intend to modify and further develop this workflow, fork this repository.
 
 ### Step 2: Configure workflow
 
-Configure the workflow according to your needs via editing the file `config.yaml`. Configure cluster settings in `cluster-config.json`
+Configure the workflow according to your needs via editing the file `config.yaml`. Configure cluster settings in `cluster-config.json` or use/modify the config yaml files in the `snakemake_profiles/slurm/` profile to run on UChicago RCC Midway.
 
 ### Step 3: Execute workflow
 
@@ -31,10 +31,12 @@ Execute the workflow locally via
 
 using `$N` cores or run it in a cluster environment via
 
-    snakemake --cluster --cluster-config cluster-config.json --cluster "sbatch --partition={cluster.partition} --job-name={cluster.name} --output=/dev/null --job-name={cluster.name} --nodes={cluster.n} --mem={cluster.mem}"
+    snakemake --profile snakemake_profiles/slurm
 
 or by executing the included sbatch script to execute the snakemake process from a cluster
 
     sbatch snakemake.sbatch
+
+This is the option I usually do, and it will output snakemake log to `snakemake.sbatch.log``
 
 See the [Snakemake documentation](https://snakemake.readthedocs.io) for further details.

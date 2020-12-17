@@ -5,4 +5,5 @@
   "project_name": "RNA-Seq",
   "repo_name": "rna-seq",
   "min_snakemake_version": "5.3.0"
+  "slurm_parition": "broadwl"
 }

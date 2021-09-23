@@ -1,4 +1,6 @@
 *
+!config
+!config/*
 !snakemake_profiles
 !snakemake_profiles/**
 !scripts

@@ -4,12 +4,10 @@ channels:
   - bioconda
 dependencies:
   - python=3.9   # or 2.7
-  - numpy=1.9.*
   - bcftools
   - bedtools
   - biopython
   - fastx_toolkit
-  - hisat2=2.1.0
   - multiqc
   - numpy
   - pandas

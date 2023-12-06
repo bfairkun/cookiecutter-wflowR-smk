@@ -1,13 +1,13 @@
 import pandas as pd
 import os
 
-###### Config file and sample sheets #####
-configfile: "config.yaml"
 
-samples = pd.read_csv(config["samples"],sep='\t', index_col=0)
+# try/except useful for running this script in isolation in interactive shell
+# for debugging
+try:
+    samples = pd.read_csv(config["samples"],sep='\t', index_col=0)
+except (NameError, KeyError) as NameOrKeyError:
+    samples = pd.read_csv("config/samples.tsv",sep='\t', index_col=0)
 
-# # How to access values in samples.tsv
-
-# print(samples)
-# print( expand("Hello {sample}", sample=samples.index) )
-# print( samples.at["A", "R1"] )
+# Add code for function definitions and other things that must be defined prior
+# to rest of workflow (eg custom snakemake input functions)

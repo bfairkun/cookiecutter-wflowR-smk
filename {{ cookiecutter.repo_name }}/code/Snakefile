@@ -1,8 +1,8 @@
 # The main entry point of your workflow.
 # After configuring, running snakemake -n in a clone of this repository should successfully execute a dry-run of the workflow.
 
-include: "rules/common.smk"
 configfile: "config/config.yaml"
+include: "rules/common.smk"
 
 # Instead of using samples.tsv file, a quick/dirty way to apply rules over grob of existing files is this:
 # IDS, = glob_wildcards("Path/To/{MyFileNames}.bed.gz")

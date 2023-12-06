@@ -5,6 +5,8 @@
 !snakemake_profiles/**
 !scripts
 !scripts/*
+!module_workflows
+!module_workflows/*
 !scripts/common
 !scripts/common/*
 scripts/.snakemake*

@@ -1,3 +1,0 @@
-[submodule "{{ cookiecutter.repo_name }}/code/module_workflows/snakemake-workflow_rna-seq"]
-	path = {{ cookiecutter.repo_name }}/code/module_workflows/snakemake-workflow_rna-seq
-	url = git@github.com:bfairkun/snakemake-workflow_rna-seq.git

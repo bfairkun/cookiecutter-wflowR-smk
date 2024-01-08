@@ -9,3 +9,15 @@ editor_options:
 ---
 
 Welcome to my research website.
+
+## Full listing of all Rmarkdown notebooks by file name:
+
+```{r, results = 'asis'}
+library(tidyverse)
+rmds <- list.files(path = "../analysis/", pattern="^\\d+.+")
+rmd_htmls <- str_replace(rmds, "Rmd$", "html")
+for(i in rmd_htmls){
+  cat("[", i, "](", i,")\n\n", sep="")
+}
+```
+

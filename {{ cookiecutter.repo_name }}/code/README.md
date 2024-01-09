@@ -12,7 +12,7 @@
 
 ### Step 1: Install workflow and dependencies
 
-If you simply want to use this workflow, clone the [latest release](https://github.com/bfairkun/{{cookiecutter.repo_name}}).
+If you simply want to use this workflow, clone the [latest release](https://github.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}).
 
     git clone git@github.com:{{cookiecutter.username}}/{{cookiecutter.repo_name}}.git
 

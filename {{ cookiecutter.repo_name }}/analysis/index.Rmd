@@ -6,18 +6,40 @@ output:
     toc: false
 editor_options:
   chunk_output_type: console
+params:
+  github: "https://github.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/blob/main/"
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message=F)
+```
 
 Welcome to my research website.
 
-## Full listing of all Rmarkdown notebooks by file name:
+## Full listing of notebooks:
 
-```{r, results = 'asis'}
+### html notebooks
+
+```{r, results = 'asis', echo = FALSE}
 library(tidyverse)
-rmds <- list.files(path = "../analysis/", pattern="^\\d+.+")
-rmd_htmls <- str_replace(rmds, "Rmd$", "html")
-for(i in rmd_htmls){
-  cat("[", i, "](", i,")\n\n", sep="")
+htmls <- list.files(path = "../docs/", pattern="^.+\\.html$") %>%
+  str_replace("^(.+?)\\.html$", "\\1") %>%
+  str_subset(pattern = "^about$|^index$|^license$", negate = TRUE)
+for(fn in htmls){
+  cat("[", fn, "](", fn,".html)\n\n", sep="")
 }
 ```
+
+### jupyter notebooks
+
+```{r,  results = 'asis', echo = FALSE}
+ipynbs <- list.files(path = "../analysis/", pattern="^.+\\.ipynb$") %>%
+  str_replace("^(.+?)\\.ipynb$", "\\1")
+
+for(fn in ipynbs){
+  cat("[", i, "](",params$github, "analysis/",  fn,")\n\n", sep="")
+}
+
+```
+
 

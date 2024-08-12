@@ -3,3 +3,9 @@
 # one row per sample. It can be parsed easily via pandas.
 
 samples: config/samples.tsv
+
+
+{% for submodule in cookiecutter.submodules %}
+{{ submodule }}:
+    ## Define {{ submodule }} config values
+{% endfor %}

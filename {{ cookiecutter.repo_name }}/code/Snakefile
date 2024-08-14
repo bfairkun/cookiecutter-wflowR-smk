@@ -4,8 +4,10 @@
 configfile: "config/config.yaml"
 include: "rules/common.smk"
 
-# Instead of using samples.tsv file, a quick/dirty way to apply rules over grob of existing files is this:
-# IDS, = glob_wildcards("Path/To/{MyFileNames}.bed.gz")
+rule all:
+    input:
+        # The first rule should define the default target files
+        # Subsequent target rules can be specified below. They should start with all_*.
 
 {% for submodule in cookiecutter.submodules %}
 module {{ submodule }}:
@@ -16,11 +18,6 @@ use rule * from {{ submodule }} as {{ submodule }}_*
 # some rules in the module are shell commands which call a script assuming the workdir is the other workdir. use symlinks for scripts to fix.
 CreateSymlinksOfDir1ContentsIntoDir2("module_workflows/{{ submodule }}/scripts/", "scripts/")
 {% endfor %}
-
-rule all:
-    input:
-        # The first rule should define the default target files
-        # Subsequent target rules can be specified below. They should start with all_*.
 
 
 include: "rules/other.smk"

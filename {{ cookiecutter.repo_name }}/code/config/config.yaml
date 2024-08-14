@@ -7,5 +7,5 @@ samples: config/samples.tsv
 
 {% for submodule in cookiecutter.submodules %}
 {{ submodule }}:
-    ## Define {{ submodule }} config values
+    ## Define {{ submodule }} specific-config values that will overwrite workflow-wide config values if they are defined above
 {% endfor %}

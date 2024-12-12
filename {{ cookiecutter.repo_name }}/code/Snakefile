@@ -11,7 +11,7 @@ rule all:
 
 {% for submodule in cookiecutter.submodules %}
 module {{ submodule }}:
-    snakefile: "module_workflows/snakemake-workflow_rna-seq/Snakefile"
+    snakefile: "module_workflows/{{ submodule }}/Snakefile"
     prefix: "{{ submodule }}"
     config: config["{{ submodule }}"]
 use rule * from {{ submodule }} as {{ submodule }}_*

@@ -4,11 +4,6 @@
 configfile: "config/config.yaml"
 include: "rules/common.smk"
 
-rule all:
-    input:
-        # The first rule should define the default target files
-        # Subsequent target rules can be specified below. They should start with all_*.
-
 {% for submodule in cookiecutter.submodules %}
 module {{ submodule }}:
     snakefile: "module_workflows/{{ submodule }}/Snakefile"
@@ -19,5 +14,9 @@ use rule * from {{ submodule }} as {{ submodule }}_*
 CreateSymlinksOfDir1ContentsIntoDir2("module_workflows/{{ submodule }}/scripts/", "scripts/")
 {% endfor %}
 
+rule all:
+    input:
+        # The first rule should define the default target files
+        # Subsequent target rules can be specified below. They should start with all_*.
 
 include: "rules/other.smk"

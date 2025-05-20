@@ -1,0 +1,18 @@
+---
+title: "Home"
+---
+
+Welcome to your Quarto project!
+
+Below is a list of all notebooks (`.qmd`, `.Rmd`, and `.ipynb` files) in the `analysis/` directory:
+
+```{r}
+#| echo: false
+notebooks <- list.files(pattern = "\\.(qmd|Rmd|ipynb)$", path = ".", full.names = FALSE)
+notebooks <- notebooks[!notebooks %in% c("index.qmd", "index.Rmd", "index.ipynb")]
+if (length(notebooks) == 0) {
+  cat("No notebooks found.")
+} else {
+  cat(paste0("- [", notebooks, "](", notebooks, ")\n"), sep = "")
+}
+```

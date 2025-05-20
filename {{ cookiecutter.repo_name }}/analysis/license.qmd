@@ -1,10 +1,5 @@
 ---
 title: "License"
-output:
-  workflowr::wflow_html:
-    toc: false
-editor_options:
-  chunk_output_type: console
 ---
 
 {% if cookiecutter.license == "MIT" -%}
@@ -277,3 +272,4 @@ traditional to choose a [Creative Commons][cc] license for this type of content.
 How should others cite your work? It's a convention to save a file `CITATION`
 in the root of your Git repo that contains the citation information.
 {% endif %}
+

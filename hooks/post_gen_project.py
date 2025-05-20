@@ -6,20 +6,20 @@ Post cookiecutter hook script to generate a conda environment for snakemake and 
 
 import sys
 import os
-import distutils.spawn
 import subprocess
 import collections
+import shutil
 
 def FindCondaExecutable():
     """
-    return either 'mamba', 'conda', or None depending on which executables are available
+    Return either 'mamba', 'conda', or None depending on which executables are available.
     """
-    if distutils.spawn.find_executable('mamba'):
-        return('mamba')
-    elif distutils.spawn.find_executable('conda'):
-        return('conda')
+    if shutil.which('mamba'):
+        return 'mamba'
+    elif shutil.which('conda'):
+        return 'conda'
     else:
-        return(None)
+        return None
 
 # Load the context from cookiecutter.json
 submodules = eval("{{ cookiecutter.submodules }}", {"OrderedDict": collections.OrderedDict})
@@ -27,10 +27,20 @@ submodules = eval("{{ cookiecutter.submodules }}", {"OrderedDict": collections.O
 # Initialize a git repository in the project directory
 subprocess.run(["git", "init"], check=True)
 
-# Add each submodule
-for submodule_name, remote_url in submodules.items():
+# Add each submodule, supporting extra arguments like branch
+for submodule_name, submodule_info in submodules.items():
+    if isinstance(submodule_info, dict):
+        remote_url = submodule_info.get("url")
+        branch = submodule_info.get("branch")
+    else:
+        remote_url = submodule_info
+        branch = None
     submodule_dest = "code/module_workflows/" + submodule_name
-    subprocess.run(["git", "submodule", "add", remote_url, submodule_dest], check=True)
+    cmd = ["git", "submodule", "add"]
+    if branch:
+        cmd += ["-b", branch]
+    cmd += [remote_url, submodule_dest]
+    subprocess.run(cmd, check=True)
 
 # Update the submodules
 subprocess.run(["git", "submodule", "update", "--init", "--recursive"], check=True)

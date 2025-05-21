@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: ../docs
 
 website:
   title: "{{ cookiecutter.project_name }}"
@@ -12,6 +13,5 @@ website:
 format:
   html:
     theme: cosmo
+    css: styles.css
     toc: true
-
-output-dir: ../docs

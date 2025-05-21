@@ -9,6 +9,11 @@ import os
 import subprocess
 import collections
 import shutil
+from collections import OrderedDict
+
+
+def indent_lines(text, indent='\t'):
+    return ''.join(f"{indent}{line}" if line.strip() else line for line in text.splitlines(keepends=True))
 
 def FindCondaExecutable():
     """
@@ -65,3 +70,25 @@ else:
     print('ERROR: %s is not a valid option for make_conda_env' % make_conda_env)
     # exits with status 1 to indicate failure
     sys.exit(1)
+
+
+config_path = os.path.join('code', 'config', 'config.yaml')
+with open(config_path, 'r') as f:
+    config_lines = f.readlines()
+
+new_config_lines = []
+submodules = {{ cookiecutter.submodules }}  # This will be replaced by the cookiecutter context
+
+for line in config_lines:
+    new_config_lines.append(line)
+    for submodule in submodules:
+        if line.strip().startswith(f"{submodule}:"):
+            # Look for the submodule config file
+            sub_cfg_path = os.path.join('code', 'module_workflows', submodule, 'config', 'config.yaml')
+            if os.path.exists(sub_cfg_path):
+                with open(sub_cfg_path, 'r') as sub_cfg:
+                    indented = indent_lines(sub_cfg.read(), indent='    ')
+                    new_config_lines.append(indented)
+
+with open(config_path, 'w') as f:
+    f.writelines(new_config_lines)

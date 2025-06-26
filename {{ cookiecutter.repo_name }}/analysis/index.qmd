@@ -8,11 +8,13 @@ Below is a list of all notebooks (`.qmd`, `.Rmd`, and `.ipynb` files) in the `an
 
 ```{r}
 #| echo: false
+#| results: 'asis'
 notebooks <- list.files(pattern = "\\.(qmd|Rmd|ipynb)$", path = ".", full.names = FALSE)
 notebooks <- notebooks[!notebooks %in% c("index.qmd", "index.Rmd", "index.ipynb")]
-if (length(notebooks) == 0) {
-  cat("No notebooks found.")
+htmls <- sub("\\.(qmd|Rmd|ipynb)$", ".html", notebooks, ignore.case = TRUE)
+if (length(htmls) == 0) {
+  cat("No rendered HTMLs found.")
 } else {
-  cat(paste0("- [", notebooks, "](", notebooks, ")\n"), sep = "")
+  cat(paste0("- [", htmls, "](", htmls, ")\n"), sep = "")
 }
 ```
